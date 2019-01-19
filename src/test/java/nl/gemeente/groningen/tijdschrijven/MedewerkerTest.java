@@ -1,6 +1,10 @@
 package nl.gemeente.groningen.tijdschrijven;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.ArrayList;
 
@@ -10,7 +14,7 @@ class MedewerkerTest {
 
 	private Afdeling afdeling;
 	private Medewerker medewerker, medewerker2;
-	
+
 	@Test
 	void test() {
 		afdeling = new Afdeling("AFD", "Afdeling");
@@ -27,7 +31,7 @@ class MedewerkerTest {
 		assertEquals(afdeling, medewerker.getAfdeling());
 		assertTrue(medewerker.getAfdeling().getCode().length() > 0);
 		assertTrue(medewerker.getRollen().size() == 1);
-		
+
 		medewerker.setInlogcode("b");
 		medewerker.setVoornaam("Pipo");
 		medewerker.setVoorvoegsels("de");
@@ -44,7 +48,7 @@ class MedewerkerTest {
 		assertTrue(medewerker.getAfdeling().getCode().length() > 0);
 		assertTrue(medewerker.getRollen() instanceof ArrayList<?>);
 		assertTrue(medewerker.getRollen().size() == 2);
-		
+
 	}
 
 }

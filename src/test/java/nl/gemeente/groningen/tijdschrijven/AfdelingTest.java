@@ -1,11 +1,12 @@
 package nl.gemeente.groningen.tijdschrijven;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
 
 class AfdelingTest {
 	Afdeling afd;
+
 	@Test
 	void test() {
 		afd = new Afdeling("AFD", "Afdeling");

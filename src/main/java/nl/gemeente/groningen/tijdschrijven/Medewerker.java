@@ -34,6 +34,10 @@ public class Medewerker {
 		this.rollen.add(Rol.MEDEWERKER);
 	}
 
+	public void addRol(Rol rol) {
+		rollen.add(rol);
+	}
+
 	public String getAchternaam() {
 		return achternaam;
 	}
@@ -90,10 +94,6 @@ public class Medewerker {
 		this.rollen = rollen;
 	}
 
-	public void addRol(Rol rol) {
-		rollen.add(rol);
-	}
-	
 	public void setVoornaam(String voornaam) {
 		this.voornaam = voornaam;
 	}
