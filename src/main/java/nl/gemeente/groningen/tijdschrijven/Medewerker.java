@@ -1,41 +1,51 @@
 package nl.gemeente.groningen.tijdschrijven;
 
-import java.util.ArrayList;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
+@Entity
+@Table(name = "Medewerkers")
 public class Medewerker {
+	@Column(length = 50, nullable = false)
 	private String achternaam;
+
+	@ManyToOne
+	@JoinColumn()
 	private Afdeling afdeling;
+
+	@Id
+	@Column(length = 8, nullable = false, unique = true)
+	private String code;
+
+	@Column(nullable = false)
 	private double deeltijdfactor;
-	private String inlogcode;
-	private String password = "welkom";
-	private ArrayList<Rol> rollen = new ArrayList<>();
+
+	@Column(length = 50, nullable = false)
 	private String voornaam;
+
+	@Column(length = 10, nullable = true)
 	private String voorvoegsels;
 
 	public Medewerker(String inlogcode, String voornaam, String achternaam, double deeltijdfactor, Afdeling afdeling) {
-		this.inlogcode = inlogcode;
+		this.code = inlogcode;
 		this.voornaam = voornaam;
 		this.achternaam = achternaam;
 		this.deeltijdfactor = deeltijdfactor;
 		this.afdeling = afdeling;
-		this.password = getPassword();
-		this.rollen.add(Rol.MEDEWERKER);
 	}
 
 	public Medewerker(String inlogcode, String voornaam, String voorvoegsels, String achternaam, double deeltijdfactor,
 			Afdeling afdeling) {
-		this.inlogcode = inlogcode;
+		this.code = inlogcode;
 		this.voornaam = voornaam;
 		this.voorvoegsels = voorvoegsels;
 		this.achternaam = achternaam;
 		this.deeltijdfactor = deeltijdfactor;
 		this.afdeling = afdeling;
-		this.password = getPassword();
-		this.rollen.add(Rol.MEDEWERKER);
-	}
-
-	public void addRol(Rol rol) {
-		rollen.add(rol);
 	}
 
 	public String getAchternaam() {
@@ -51,15 +61,7 @@ public class Medewerker {
 	}
 
 	public String getInlogcode() {
-		return inlogcode;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public ArrayList<Rol> getRollen() {
-		return rollen;
+		return code;
 	}
 
 	public String getVoornaam() {
@@ -83,15 +85,7 @@ public class Medewerker {
 	}
 
 	public void setInlogcode(String inlogcode) {
-		this.inlogcode = inlogcode;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
-	public void setRollen(ArrayList<Rol> rollen) {
-		this.rollen = rollen;
+		this.code = inlogcode;
 	}
 
 	public void setVoornaam(String voornaam) {
@@ -104,9 +98,9 @@ public class Medewerker {
 
 	@Override
 	public String toString() {
-		return "Medewerker [inlogcode=" + inlogcode + ", naam=" + voornaam + " "
-				+ (voorvoegsels == null ? "" : voorvoegsels) + ", deeltijdfactor=" + deeltijdfactor + ", afdeling="
-				+ afdeling + ", rollen=" + rollen + "]";
+		return "Medewerker [inlogcode=" + code + ", achternaam=" + achternaam + ", afdelingId=" + afdeling
+				+ ", deeltijdfactor=" + deeltijdfactor + ", voornaam=" + voornaam + ", voorvoegsels=" + voorvoegsels
+				+ "]";
 	}
 
 }

@@ -2,10 +2,24 @@ package nl.gemeente.groningen.tijdschrijven;
 
 import java.util.Date;
 
+import javax.persistence.Column;
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
+@Entity
+//@Table(name = "Onderdelen")
+@DiscriminatorValue("Project")
 public class Project extends Onderdeel {
+	@Column(nullable = false)
 	private Date begindatum;
-	private String code;
+
+	@Column()
 	private Date einddatum;
+
+	@ManyToOne
+	@JoinColumn()
 	private Opdrachtgever opdrachtgever;
 
 	public Project(String code, String naam, Opdrachtgever opdrachtgever, Date begindatum) {
@@ -16,11 +30,6 @@ public class Project extends Onderdeel {
 
 	public Date getBegindatum() {
 		return begindatum;
-	}
-
-	@Override
-	public String getCode() {
-		return code;
 	}
 
 	public Date getEinddatum() {
@@ -35,11 +44,6 @@ public class Project extends Onderdeel {
 		this.begindatum = begindatum;
 	}
 
-	@Override
-	public void setCode(String code) {
-		this.code = code;
-	}
-
 	public void setEinddatum(Date einddatum) {
 		this.einddatum = einddatum;
 	}
@@ -50,8 +54,8 @@ public class Project extends Onderdeel {
 
 	@Override
 	public String toString() {
-		return "Project [code=" + code + ", opdrachtgever=" + opdrachtgever + ", begindatum=" + begindatum
-				+ ", einddatum=" + einddatum + "]";
+		return "Project [begindatum=" + begindatum + ", einddatum=" + einddatum + ", opdrachtgever=" + opdrachtgever
+				+ "]";
 	}
 
 }

@@ -2,12 +2,42 @@ package nl.gemeente.groningen.tijdschrijven;
 
 import java.util.Date;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "Registratie")
 public class Registratie {
+	@ManyToOne
+	@JoinColumn(nullable = false)
 	private Afdeling afdeling;
+
+	@Column(nullable = false)
 	private Date datum;
+
+	@ManyToOne
+	@JoinColumn(nullable = false)
 	private Medewerker medewerker;
+
+	@ManyToOne
+	@JoinColumn()
 	private Opdrachtgever opdrachtgever;
+
+	@ManyToOne
+	@JoinColumn()
 	private Project project;
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int registratieId;
+
+	@Column(name = "Uren", nullable = false)
 	private double uren = 0;
 
 	public Registratie(Medewerker medewerker, Afdeling afdeling) {

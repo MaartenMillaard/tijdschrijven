@@ -1,10 +1,23 @@
 package nl.gemeente.groningen.tijdschrijven;
 
-import java.util.ArrayList;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
+@Entity
+@Table(name = "Afdelingen")
 public class Afdeling {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int afdelingId;
+
+	@Column(length = 10, unique = true, nullable = false)
 	private String code;
-	private ArrayList<Medewerker> medewerkers;
+
+	@Column(length = 50, unique = true, nullable = false)
 	private String naam;
 
 	public Afdeling(String code, String naam) {
@@ -12,16 +25,20 @@ public class Afdeling {
 		this.naam = naam;
 	}
 
+	public int getAfdelingId() {
+		return afdelingId;
+	}
+
 	public String getCode() {
 		return code;
 	}
 
-	public ArrayList<Medewerker> getMedewerkers() {
-		return medewerkers;
-	}
-
 	public String getNaam() {
 		return naam;
+	}
+
+	public void setAfdelingId(int afdelingId) {
+		this.afdelingId = afdelingId;
 	}
 
 	public void setCode(String code) {
@@ -34,7 +51,7 @@ public class Afdeling {
 
 	@Override
 	public String toString() {
-		return "Afdeling [code=" + code + ", naam=" + naam + "]";
+		return "Afdeling [afdelingId=" + afdelingId + ", code=" + code + ", naam=" + naam + "]";
 	}
 
 }

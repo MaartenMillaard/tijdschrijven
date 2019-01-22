@@ -1,35 +1,48 @@
 package nl.gemeente.groningen.tijdschrijven;
 
-import java.util.Calendar;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 
 public class Application {
-	private static Afdeling afdeling;
-	private static Medewerker medewerker;
-	private static Opdrachtgever opdrachtgever;
-	private static Project project;
-	private static Registratie registratie;
 
 	public static void main(String[] args) {
-		afdeling = new Afdeling("OIS", "Afdeling Onderzoek, Informatie en Statistiek");
-		System.out.println(afdeling.toString());
+		SessionFactory factory = HibernateUtils.getSessionFactory();
 
-		medewerker = new Medewerker("mermil1s", "Merlijn", "Millaard", 0.9, afdeling);
-		System.out.println(medewerker.toString());
-		medewerker.addRol(Rol.COORDINATOR);
-		System.out.println(medewerker.toString());
+		Session session = factory.getCurrentSession();
 
-		opdrachtgever = new Opdrachtgever("Arne", "DMO");
-		System.out.println(opdrachtgever.toString());
-
-		project = new Project("IND", "DMO - Indicatiewaarden", opdrachtgever, Calendar.getInstance().getTime());
-		System.out.println(project.toString());
-
-		registratie = new Registratie(medewerker, medewerker.getAfdeling());
-		registratie.setDatum(Calendar.getInstance().getTime());
-		registratie.setProject(project);
-		registratie.setUren(1.3);
-		registratie.setAfdeling(new Afdeling("DMO", "Directie Maatschappelijke Ondersteuning"));
-		registratie.setOpdrachtgever(opdrachtgever);
-		System.out.println(registratie.toString());
+//		try {
+//
+//			// All the action with DB via Hibernate
+//			// must be located in one transaction.
+//			// Start Transaction.            
+//			session.getTransaction().begin();
+//
+//
+//
+//			// Create an HQL statement, query the object.
+//			// Equivalent to the SQL statement:
+//			// Select e.* from EMPLOYEE e order by e.EMP_NAME, e.EMP_NO
+//			String sql = "Select e from " + Afdeling.class.getName() + " e ";
+//
+//
+//			// Create Query object.
+//			Query<Afdeling> query = session.createQuery(sql);
+//
+//
+//			// Execute query.
+//			List<Afdeling> afdelingen = query.getResultList();
+//
+//			for (Afdeling afd : afdelingen) {
+//				System.out.println("Afd: " + afd.getCode() + " : "
+//						+ afd.getNaam());
+//			}
+//
+//			// Commit data.
+//			session.getTransaction().commit();
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//			// Rollback in case of an error occurred.
+//			session.getTransaction().rollback();
+//		}
 	}
 }
