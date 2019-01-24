@@ -8,7 +8,9 @@ class OnderdeelTest {
 
 	@Test
 	void test() {
-		fail("Not yet implemented");
+		Onderdeel onderdeel = new Onderdeel("001", "Verlof");
+		
+		
 	}
 
 }

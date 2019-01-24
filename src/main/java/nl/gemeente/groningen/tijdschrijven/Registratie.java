@@ -1,5 +1,6 @@
 package nl.gemeente.groningen.tijdschrijven;
 
+import java.util.Calendar;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -14,12 +15,33 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "Registratie")
 public class Registratie {
+	public Registratie(Calendar datum, Medewerker medewerker, Afdeling afdeling, Project project, Opdrachtgever opdrachtgever,
+			double uren) {
+		this.registratiedatum = Calendar.getInstance();
+		this.datum = datum;
+		this.medewerker = medewerker;
+		this.afdeling = afdeling;
+		this.project = project;
+		this.opdrachtgever = opdrachtgever;
+		this.uren = uren;
+	}
+
+	public Registratie(Calendar datum, Medewerker medewerker, Afdeling afdeling, Project project, 
+			double uren) {
+		this.registratiedatum = Calendar.getInstance();
+		this.datum = datum;
+		this.medewerker = medewerker;
+		this.afdeling = afdeling;
+		this.project = project;
+		this.uren = uren;
+	}
+
 	@ManyToOne
 	@JoinColumn(nullable = false)
 	private Afdeling afdeling;
 
 	@Column(nullable = false)
-	private Date datum;
+	private Calendar datum;
 
 	@ManyToOne
 	@JoinColumn(nullable = false)
@@ -32,6 +54,9 @@ public class Registratie {
 	@ManyToOne
 	@JoinColumn()
 	private Project project;
+
+	@Column(nullable = false)
+	private Calendar registratiedatum;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -49,7 +74,7 @@ public class Registratie {
 		return afdeling;
 	}
 
-	public Date getDatum() {
+	public Calendar getDatum() {
 		return datum;
 	}
 
@@ -65,6 +90,10 @@ public class Registratie {
 		return project;
 	}
 
+	public Calendar getRegistratiedatum() {
+		return registratiedatum;
+	}
+
 	public double getUren() {
 		return uren;
 	}
@@ -73,7 +102,7 @@ public class Registratie {
 		this.afdeling = afdeling;
 	}
 
-	public void setDatum(Date datum) {
+	public void setDatum(Calendar datum) {
 		this.datum = datum;
 	}
 
@@ -87,6 +116,10 @@ public class Registratie {
 
 	public void setProject(Project project) {
 		this.project = project;
+	}
+
+	public void setRegistratiedatum(Calendar registratiedatum) {
+		this.registratiedatum = registratiedatum;
 	}
 
 	public void setUren(double uren) {

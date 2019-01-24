@@ -37,10 +37,10 @@ public class Afdeling {
 		return naam;
 	}
 
-	public void setAfdelingId(int afdelingId) {
-		this.afdelingId = afdelingId;
-	}
-
+//	public void setAfdelingId(int afdelingId) {
+//		this.afdelingId = afdelingId;
+//	}
+//
 	public void setCode(String code) {
 		this.code = code;
 	}

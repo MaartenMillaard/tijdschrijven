@@ -8,7 +8,7 @@ class OpdrachtgeverTest {
 
 	@Test
 	void test() {
-		fail("Not yet implemented");
+		Opdrachtgever opdrachtgever = new Opdrachtgever("Arne", "DMO");
 	}
 
 }
