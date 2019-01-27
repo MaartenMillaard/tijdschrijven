@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Afdelingen</title>
+<script>
+
+$(document).ready( function() {
+  $.ajax('http://localhost:8081/afdeling', {'method':'GET'})
+   .done( function(data) { 
+     $.each(data, function(idx, el) { 
+       let h = `<tr class='afd' id='${el.afdelingId}'><td>${el.code}</td><td>${el.naam}</td></tr>`
+       $("#afdelingen").html($("#afdelingen").html() + h) 
+     })
+   })
+   .fail( function(e) { console.log(e)} )
+ 
+ $("#afdeling").on('click', '.afd', function(el) { console.log(el.currentTarget.id) })
+})
+
+</script>
+</head>
+<body>
+<table id="afdelingen">
+<tr><th>Afdelingcode</th><th>Afdeling</th></tr>
+</table>
+
+</body>
+</html>

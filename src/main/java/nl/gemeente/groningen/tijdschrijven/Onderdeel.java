@@ -18,6 +18,7 @@ import javax.persistence.Table;
 @DiscriminatorColumn(name = "OnderdeelType", discriminatorType = DiscriminatorType.STRING)
 @DiscriminatorValue("Generiek")
 public class Onderdeel {
+	
 	@Column(length = 8, nullable = false)
 	private String code;
 

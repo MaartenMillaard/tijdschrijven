@@ -13,6 +13,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "Registratie")
 public class Registratie {
+	public Registratie() {}
 	public Registratie(Calendar datum, Medewerker medewerker, Afdeling afdeling, Project project, Opdrachtgever opdrachtgever,
 			double uren) {
 		this.registratiedatum = Calendar.getInstance();

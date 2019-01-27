@@ -30,6 +30,7 @@
 		<junit.version>5.4.0-M1</junit.version>
 		<hibernate.version>5.4.0.Final</hibernate.version>
 		<mysql.version>8.0.13</mysql.version>
+		<spring.version>2.1.2.RELEASE</spring.version>
 	</properties>
 
 	<dependencies>
@@ -59,11 +60,25 @@
 			<artifactId>hibernate-core</artifactId>
 			<version>${hibernate.version}</version>
 		</dependency>
+		
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
 			<version>${mysql.version}</version>
 		</dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-jdbc</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+
 	</dependencies>
 
 </project>

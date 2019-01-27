@@ -10,6 +10,14 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "Afdelingen")
 public class Afdeling {
+
+	public Afdeling() {}
+	
+	public Afdeling(String code, String naam) {
+		this.code = code;
+		this.naam = naam;
+	}
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int afdelingId;
@@ -19,11 +27,6 @@ public class Afdeling {
 
 	@Column(length = 50, unique = true, nullable = false)
 	private String naam;
-
-	public Afdeling(String code, String naam) {
-		this.code = code;
-		this.naam = naam;
-	}
 
 	public int getAfdelingId() {
 		return afdelingId;

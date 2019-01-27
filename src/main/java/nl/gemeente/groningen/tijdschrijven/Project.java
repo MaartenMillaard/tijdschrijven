@@ -26,6 +26,7 @@ public class Project extends Onderdeel {
 		this.begindatum = begindatum;
 		this.einddatum = einddatum;
 	}
+	
 
 	public Project(String code, String naam, Opdrachtgever opdrachtgever, Calendar begindatum) {
 		super(code, naam);
