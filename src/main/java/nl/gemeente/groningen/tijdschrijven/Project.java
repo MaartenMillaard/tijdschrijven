@@ -1,8 +1,6 @@
 package nl.gemeente.groningen.tijdschrijven;
 
 import java.util.Calendar;
-import java.util.Date;
-
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;

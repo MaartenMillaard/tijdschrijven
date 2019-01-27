@@ -3,7 +3,7 @@ package nl.gemeente.groningen.tijdschrijven;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
-public class Application {
+public class Tijdschrijven {
 
 	public static void main(String[] args) {
 		SessionFactory factory = HibernateUtils.getSessionFactory();
