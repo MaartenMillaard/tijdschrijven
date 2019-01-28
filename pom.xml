@@ -31,6 +31,7 @@
 		<hibernate.version>5.4.0.Final</hibernate.version>
 		<mysql.version>8.0.13</mysql.version>
 		<spring.version>2.1.2.RELEASE</spring.version>
+		<jquery.version>3.3.1</jquery.version>
 	</properties>
 
 	<dependencies>
@@ -78,6 +79,12 @@
             <artifactId>spring-boot-starter-jdbc</artifactId>
             <version>${spring.version}</version>
         </dependency>
+
+<dependency>
+    <groupId>org.webjars.bower</groupId>
+    <artifactId>jquery</artifactId>
+    <version>${jquery.version}</version>
+</dependency>
 
 	</dependencies>
 

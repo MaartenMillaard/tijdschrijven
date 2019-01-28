@@ -11,7 +11,10 @@ import javax.persistence.Table;
 @Table(name = "Afdelingen")
 public class Afdeling {
 
-	public Afdeling() {}
+	public Afdeling(int afdelingId, String code, String naam) {
+		this.code = code;
+		this.naam = naam;
+	}
 	
 	public Afdeling(String code, String naam) {
 		this.code = code;
@@ -19,18 +22,11 @@ public class Afdeling {
 	}
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int afdelingId;
-
 	@Column(length = 10, unique = true, nullable = false)
 	private String code;
 
 	@Column(length = 50, unique = true, nullable = false)
 	private String naam;
-
-	public int getAfdelingId() {
-		return afdelingId;
-	}
 
 	public String getCode() {
 		return code;
@@ -45,7 +41,7 @@ public class Afdeling {
 //	}
 //
 	public void setCode(String code) {
-		this.code = code;
+		this.code = code.replace((char) 32, (char) 95).toUpperCase();
 	}
 
 	public void setNaam(String naam) {
@@ -54,7 +50,7 @@ public class Afdeling {
 
 	@Override
 	public String toString() {
-		return "Afdeling [afdelingId=" + afdelingId + ", code=" + code + ", naam=" + naam + "]";
+		return "Afdeling [code=" + code + ", naam=" + naam + "]";
 	}
 
 }

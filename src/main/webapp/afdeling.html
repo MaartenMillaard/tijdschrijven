@@ -3,26 +3,103 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Afdelingen</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
 <script>
-
 $(document).ready( function() {
-  $.ajax('http://localhost:8081/afdeling', {'method':'GET'})
-   .done( function(data) { 
-     $.each(data, function(idx, el) { 
-       let h = `<tr class='afd' id='${el.afdelingId}'><td>${el.code}</td><td>${el.naam}</td></tr>`
-       $("#afdelingen").html($("#afdelingen").html() + h) 
-     })
-   })
-   .fail( function(e) { console.log(e)} )
- 
- $("#afdeling").on('click', '.afd', function(el) { console.log(el.currentTarget.id) })
-})
+	 $.ajax('/afdelingen', {
+		 'method':'GET'
+	}).done(function(data) { 
+		$.each(data, function(idx, el) { 
+		let h = `<tr class='afd' id='${el.code}'><td>${el.code}</td><td><input value='${el.naam}'></td></tr>`
+		$("#afdelingen").html($("#afdelingen").html() + h) 
+		});
+	}).fail( function(e) { console.log(e)});
+});
 
+$('#read').click(function() {
+    $.ajax('/afdeling', {
+        data: {
+        	id: $('#id').val()
+        },
+        method: 'GET'
+    }).done(function(json) {
+        $('#id').val(json.afdelingId);
+        $('#code').val(json.code);
+        $('#naam').val(json.naam);
+    }).done(function(){
+    	location.reload(true);
+    });
+});
+
+$('#create').click(function() {
+    $.ajax('/afdeling/code', {
+        data: {
+            code: $('#code').val(),
+            naam: $('#naam').val()
+        },
+        method: 'POST'
+    }).done(function(json) {
+        $('#id').val(json.id);
+        $('#code').val(json.code);
+        $('#naam').val(json.naam);
+    });
+});
+
+$('#update').click(function() {
+    $.ajax('/hr', {
+        data: {
+            id: $('#id').val(),
+            first_name: $('#first_name').val(),
+            last_name: $('#last_name').val(),
+            email: $('#email').val(),
+            salary: $('#salary').val()
+        },
+        method: 'put'
+    }).done(function(json) {
+        $('#id').val(json.id);
+        $('#first_name').val(json.first_name);
+        $('#last_name').val(json.last_name);
+        $('#email').val(json.email);
+        $('#salary').val(json.salary);
+    });
+});
+
+$('#delete').click(function() {
+    $.ajax('/hr', {
+        data: { id: $('#id').val() },
+        method: 'delete'
+    }).done(function() {
+        $('#id').val("");
+        $('#first_name').val("");
+        $('#last_name').val("");
+        $('#email').val("");
+        $('#salary').val("");
+    });
+});
 </script>
 </head>
 <body>
+<label for="code">Geef de afdelingcode</label> <input id="code">
+<label for="naam">Geef de afdelingnaam</label> <input id="naam">
+<button id="create">Voeg toe</button>
+ <script>
+$('#create').click(function() {
+    $.ajax('/afdeling/code', {
+        data: {
+            code: $('#code').val(),
+            naam: $('#naam').val()
+        },
+        method: 'POST'
+    }).done(function(json) {
+        $('#id').val(json.id);
+        $('#code').val(json.code);
+        $('#naam').val(json.naam);
+    });
+});
+</script>
 <table id="afdelingen">
-<tr><th>Afdelingcode</th><th>Afdeling</th></tr>
+<tr><th>AfdelingId</th><th>Afdelingcode</th><th>Afdeling</th></tr>
 </table>
 
 </body>
