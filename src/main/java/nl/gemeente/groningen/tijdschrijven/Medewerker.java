@@ -11,36 +11,16 @@ import javax.persistence.Table;
 @Table(name = "Medewerkers")
 public class Medewerker {
 	
-	public Medewerker() {}
-	public Medewerker(String inlogcode, String voornaam, String achternaam, double deeltijdfactor, Afdeling afdeling) {
-		this.code = inlogcode;
-		this.voornaam = voornaam;
-		this.achternaam = achternaam;
-		this.deeltijdfactor = deeltijdfactor;
-		this.afdeling = afdeling;
-	}
-	
-	public Medewerker(String inlogcode, String voornaam, String voorvoegsels, String achternaam, double deeltijdfactor,
-			Afdeling afdeling) {
-		this.code = inlogcode;
-		this.voornaam = voornaam;
-		this.voorvoegsels = voorvoegsels;
-		this.achternaam = achternaam;
-		this.deeltijdfactor = deeltijdfactor;
-		this.afdeling = afdeling;
-	}
-	
 	@Column(length = 50, nullable = false)
 	private String achternaam;
-
 	@ManyToOne
 	@JoinColumn()
 	private Afdeling afdeling;
-
+	
 	@Id
 	@Column(length = 8, nullable = false, unique = true)
 	private String code;
-
+	
 	@Column(nullable = false)
 	private double deeltijdfactor;
 

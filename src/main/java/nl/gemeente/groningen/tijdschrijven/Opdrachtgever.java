@@ -20,13 +20,6 @@ public class Opdrachtgever {
 	@Column(length = 50, nullable = false)
 	private String organisatie;
 	
-	public Opdrachtgever() {}
-
-	public Opdrachtgever(String naam, String organisatie) {
-		this.naam = naam;
-		this.organisatie = organisatie;
-	}
-
 	public String getNaam() {
 		return naam;
 	}

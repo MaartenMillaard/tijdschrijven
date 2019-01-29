@@ -20,20 +20,6 @@ public class Project extends Onderdeel {
 	@JoinColumn()
 	private Opdrachtgever opdrachtgever;
 
-	public Project(String code, String naam, Opdrachtgever opdrachtgever, Calendar begindatum, Calendar einddatum) {
-		super(code, naam);
-		this.opdrachtgever = opdrachtgever;
-		this.begindatum = begindatum;
-		this.einddatum = einddatum;
-	}
-	
-
-	public Project(String code, String naam, Opdrachtgever opdrachtgever, Calendar begindatum) {
-		super(code, naam);
-		this.opdrachtgever = opdrachtgever;
-		this.begindatum = begindatum;
-	}
-
 	public Calendar getBegindatum() {
 		return begindatum;
 	}

@@ -17,13 +17,6 @@ public class Gebruiker implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	public Gebruiker() {}
-	public Gebruiker(Medewerker gebruiker) {
-		this.gebruiker = gebruiker;
-		this.rol = Rol.MEDEWERKER;
-		this.wachtwoord = "welkom";
-	}
-
 	@Id
 	@OneToOne
 	@JoinColumn(referencedColumnName = "code", nullable = false, unique = true)

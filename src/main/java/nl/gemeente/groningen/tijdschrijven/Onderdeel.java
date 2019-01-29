@@ -29,11 +29,6 @@ public class Onderdeel {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int onderdeelId;
 
-	public Onderdeel(String code, String naam) {
-		this.code = code;
-		this.naam = naam;
-	}
-
 	public String getCode() {
 		return code;
 	}
