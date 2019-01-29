@@ -1,31 +1,27 @@
-package nl.gemeente.groningen.tijdschrijven;
+package nl.gemeente.groningen.tijdschrijven.entity;
 
-import java.io.Serializable;
-
-import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-@Entity
-public class Gebruiker implements Serializable {
+import org.hibernate.validator.constraints.UniqueElements;
 
-	private static final long serialVersionUID = 1L;
+@Entity
+@Table(name = "gebruikers")
+public class Gebruiker {
 
 	@Id
-	@OneToOne
-	private Medewerker gebruiker;
+	private String medewerkercode;
 	private String wachtwoord;
+	@UniqueElements
 	private String emailadres;
 	@OneToOne
+	@JoinColumn(name = "rolId")
 	private Rol rol;
 
-	public Medewerker getGebruiker() {
-		return gebruiker;
+	public Gebruiker() {
 	}
 
 	public Rol getRol() {
@@ -34,10 +30,6 @@ public class Gebruiker implements Serializable {
 
 	public String getWachtwoord() {
 		return wachtwoord;
-	}
-
-	public void setGebruiker(Medewerker gebruiker) {
-		this.gebruiker = gebruiker;
 	}
 
 	public void setRol(Rol rol) {
@@ -58,7 +50,16 @@ public class Gebruiker implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Gebruiker [gebruiker=" + gebruiker + ", rol=" + rol + ", wachtwoord=" + wachtwoord + "]";
+		return "Gebruiker [medewerkercode=" + medewerkercode + ", wachtwoord=" + wachtwoord + ", emailadres="
+				+ emailadres + ", rol=" + rol + "]";
+	}
+
+	public String getMedewerkercode() {
+		return medewerkercode;
+	}
+
+	public void setMedewerkercode(String medewerkercode) {
+		this.medewerkercode = medewerkercode;
 	}
 
 }

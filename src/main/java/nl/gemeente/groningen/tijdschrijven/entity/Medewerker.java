@@ -1,24 +1,27 @@
-package nl.gemeente.groningen.tijdschrijven;
+package nl.gemeente.groningen.tijdschrijven.entity;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
+@Table(name = "medewerkers")
 public class Medewerker {
-	
+
 	@Id
 	private String medewerkercode;
 	private String voornaam;
 	private String voorvoegsels;
 	private String achternaam;
 	@ManyToOne
+	@JoinColumn(name = "afdelingId")
 	private Afdeling afdeling;
 	private double deeltijdfactor;
+
+	public Medewerker() {
+	}
 
 	public String getAchternaam() {
 		return achternaam;

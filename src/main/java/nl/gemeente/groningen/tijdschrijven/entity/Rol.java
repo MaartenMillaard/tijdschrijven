@@ -1,24 +1,25 @@
-package nl.gemeente.groningen.tijdschrijven;
+package nl.gemeente.groningen.tijdschrijven.entity;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.hibernate.validator.constraints.UniqueElements;
+
 @Entity
-public enum Rol {
-	AFDELINGSHOOFD("Afdelingshoofd"), COORDINATOR("Coördinator"), DIRECTEUR("Directeur"), MEDEWERKER("Medewerker");
+@Table(name = "rollen")
+public class Rol {
+
+	public Rol() {
+	}
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int rolId;
+	@UniqueElements
 	private String rol;
-
-	private Rol(String rol) {
-		this.rol = rol;
-	}
 
 	public String getRol() {
 		return rol;

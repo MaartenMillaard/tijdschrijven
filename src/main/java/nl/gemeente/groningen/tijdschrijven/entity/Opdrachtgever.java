@@ -1,20 +1,26 @@
-package nl.gemeente.groningen.tijdschrijven;
+package nl.gemeente.groningen.tijdschrijven.entity;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.hibernate.validator.constraints.UniqueElements;
+
 @Entity
+@Table(name = "opdrachtgevers")
 public class Opdrachtgever {
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int opdrachtgeverId;
+	@UniqueElements
 	private String naam;
 	private String organisatie;
-	
+
+	public Opdrachtgever() {
+	}
+
 	public String getNaam() {
 		return naam;
 	}

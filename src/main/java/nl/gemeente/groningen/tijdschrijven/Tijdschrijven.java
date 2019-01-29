@@ -1,6 +1,5 @@
 package nl.gemeente.groningen.tijdschrijven;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -8,8 +7,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class Tijdschrijven {
 
 	public static void main(String[] args) {
-		System.out.println("Starting application...");
-
 		SpringApplication.run(Tijdschrijven.class, args);
 	}
 }
