@@ -7,7 +7,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class Tijdschrijven {
 
-	@Autowired
 	public static void main(String[] args) {
 		System.out.println("Starting application...");
 
