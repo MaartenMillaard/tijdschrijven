@@ -8,99 +8,79 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "Registratie")
 public class Registratie {
-	@ManyToOne
-	@JoinColumn(nullable = false)
-	private Afdeling afdeling;
-	@Column(nullable = false)
-	private Calendar datum;
-
-	@ManyToOne
-	@JoinColumn(nullable = false)
-	private Medewerker medewerker;
-
-	@ManyToOne
-	@JoinColumn()
-	private Opdrachtgever opdrachtgever;
-
-	@ManyToOne
-	@JoinColumn()
-	private Project project;
-
-	@Column(nullable = false)
-	private Calendar registratiedatum;
-
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int registratieId;
-
-	@Column(name = "Uren", nullable = false)
+	private Calendar datum;
+	@ManyToOne
+	private Medewerker medewerker;
+	@ManyToOne
+	private Onderdeel onderdeel;
+	@ManyToOne
+	private Opdrachtgever opdrachtgever;
+	@ManyToOne
+	private Afdeling afdeling;
 	private double uren = 0;
-
-	public Afdeling getAfdeling() {
+	private Calendar registratiedatum;
+	
+	private int getRegistratieId() {
+		return registratieId;
+	}
+	private void setRegistratieId(int registratieId) {
+		this.registratieId = registratieId;
+	}
+	private Afdeling getAfdeling() {
 		return afdeling;
 	}
-
-	public Calendar getDatum() {
-		return datum;
-	}
-
-	public Medewerker getMedewerker() {
-		return medewerker;
-	}
-
-	public Opdrachtgever getOpdrachtgever() {
-		return opdrachtgever;
-	}
-
-	public Project getProject() {
-		return project;
-	}
-
-	public Calendar getRegistratiedatum() {
-		return registratiedatum;
-	}
-
-	public double getUren() {
-		return uren;
-	}
-
-	public void setAfdeling(Afdeling afdeling) {
+	private void setAfdeling(Afdeling afdeling) {
 		this.afdeling = afdeling;
 	}
-
-	public void setDatum(Calendar datum) {
+	private Calendar getDatum() {
+		return datum;
+	}
+	private void setDatum(Calendar datum) {
 		this.datum = datum;
 	}
-
-	public void setMedewerker(Medewerker medewerker) {
+	private Medewerker getMedewerker() {
+		return medewerker;
+	}
+	private void setMedewerker(Medewerker medewerker) {
 		this.medewerker = medewerker;
 	}
-
-	public void setOpdrachtgever(Opdrachtgever opdrachtgever) {
+	private Opdrachtgever getOpdrachtgever() {
+		return opdrachtgever;
+	}
+	private void setOpdrachtgever(Opdrachtgever opdrachtgever) {
 		this.opdrachtgever = opdrachtgever;
 	}
-
-	public void setProject(Project project) {
-		this.project = project;
+	private Onderdeel getOnderdeel() {
+		return onderdeel;
 	}
-
-	public void setRegistratiedatum(Calendar registratiedatum) {
+	private void setOnderdeel(Onderdeel onderdeel) {
+		this.onderdeel = onderdeel;
+	}
+	private Calendar getRegistratiedatum() {
+		return registratiedatum;
+	}
+	private void setRegistratiedatum(Calendar registratiedatum) {
 		this.registratiedatum = registratiedatum;
 	}
-
-	public void setUren(double uren) {
+	private double getUren() {
+		return uren;
+	}
+	private void setUren(double uren) {
 		this.uren = uren;
 	}
-
 	@Override
 	public String toString() {
-		return "Registratie [medewerker=" + medewerker + ", project=" + project + ", afdeling=" + afdeling
-				+ ", opdrachtgever=" + opdrachtgever + ", datum=" + datum + ", uren=" + uren + "]";
+		return "Registratie [registratieId=" + registratieId + ", afdeling=" + afdeling + ", datum=" + datum
+				+ ", medewerker=" + medewerker + ", opdrachtgever=" + opdrachtgever + ", onderdeel=" + onderdeel
+				+ ", registratiedatum=" + registratiedatum + ", uren=" + uren + "]";
 	}
 
 }

@@ -8,16 +8,11 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "Opdrachtgevers")
 public class Opdrachtgever {
-	@Column(length = 50, unique = true, nullable = false)
-	private String naam;
-
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int opdrachtgeverId;
-
-	@Column(length = 50, nullable = false)
+	private String naam;
 	private String organisatie;
 	
 	public String getNaam() {

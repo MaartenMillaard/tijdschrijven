@@ -12,21 +12,17 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "Gebruikers")
 public class Gebruiker implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@OneToOne
-	@JoinColumn(referencedColumnName = "code", nullable = false, unique = true)
 	private Medewerker gebruiker;
-
-	@Enumerated(EnumType.ORDINAL)
-	private Rol rol;
-
-	@Column(nullable = false)
 	private String wachtwoord;
+	private String emailadres;
+	@OneToOne
+	private Rol rol;
 
 	public Medewerker getGebruiker() {
 		return gebruiker;
@@ -50,6 +46,14 @@ public class Gebruiker implements Serializable {
 
 	public void setWachtwoord(String wachtwoord) {
 		this.wachtwoord = wachtwoord;
+	}
+
+	public String getEmailadres() {
+		return emailadres;
+	}
+
+	public void setEmailadres(String emailadres) {
+		this.emailadres = emailadres;
 	}
 
 	@Override

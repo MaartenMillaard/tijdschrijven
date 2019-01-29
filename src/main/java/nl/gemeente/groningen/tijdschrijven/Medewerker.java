@@ -5,30 +5,20 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "Medewerkers")
 public class Medewerker {
 	
-	@Column(length = 50, nullable = false)
+	@Id
+	private String medewerkercode;
+	private String voornaam;
+	private String voorvoegsels;
 	private String achternaam;
 	@ManyToOne
-	@JoinColumn()
 	private Afdeling afdeling;
-	
-	@Id
-	@Column(length = 8, nullable = false, unique = true)
-	private String code;
-	
-	@Column(nullable = false)
 	private double deeltijdfactor;
-
-	@Column(length = 50, nullable = false)
-	private String voornaam;
-
-	@Column(length = 10, nullable = true)
-	private String voorvoegsels;
 
 	public String getAchternaam() {
 		return achternaam;
@@ -43,7 +33,7 @@ public class Medewerker {
 	}
 
 	public String getInlogcode() {
-		return code;
+		return medewerkercode;
 	}
 
 	public String getVoornaam() {
@@ -67,7 +57,7 @@ public class Medewerker {
 	}
 
 	public void setInlogcode(String inlogcode) {
-		this.code = inlogcode;
+		this.medewerkercode = inlogcode;
 	}
 
 	public void setVoornaam(String voornaam) {
@@ -80,9 +70,17 @@ public class Medewerker {
 
 	@Override
 	public String toString() {
-		return "Medewerker [inlogcode=" + code + ", achternaam=" + achternaam + ", afdelingId=" + afdeling
-				+ ", deeltijdfactor=" + deeltijdfactor + ", voornaam=" + voornaam + ", voorvoegsels=" + voorvoegsels
-				+ "]";
+		return "Medewerker [medewerkercode=" + medewerkercode + ", voornaam=" + voornaam + ", voorvoegsels="
+				+ voorvoegsels + ", achternaam=" + achternaam + ", afdeling=" + afdeling + ", deeltijdfactor="
+				+ deeltijdfactor + "]";
+	}
+
+	private String getMedewerkercode() {
+		return medewerkercode;
+	}
+
+	private void setMedewerkercode(String medewerkercode) {
+		this.medewerkercode = medewerkercode;
 	}
 
 }

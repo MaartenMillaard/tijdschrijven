@@ -8,16 +8,13 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "Rollen")
 public enum Rol {
 	AFDELINGSHOOFD("Afdelingshoofd"), COORDINATOR("Coördinator"), DIRECTEUR("Directeur"), MEDEWERKER("Medewerker");
 
-	@Column(length = 20, nullable = false)
-	private String rol;
-
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int rolId;
+	private String rol;
 
 	private Rol(String rol) {
 		this.rol = rol;
