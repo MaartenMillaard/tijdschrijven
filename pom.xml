@@ -28,7 +28,7 @@
 
 	<properties>
 		<junit.version>5.4.0-M1</junit.version>
-		<hibernate.version>5.4.0.Final</hibernate.version>
+		<hibernate.version>5.4.24.Final</hibernate.version>
 		<mysql.version>8.0.13</mysql.version>
 	</properties>
 
